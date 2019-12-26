@@ -18,14 +18,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/store', 'HomeController@store')->name('store');
 
 Route::get('/products', 'ProductController@index')->name('product.index');
 
+Route::delete('/products/{product}', 'ProductController@destroy')->name('product.remove');
 
 Route::get('/addToCart/{product}', 'ProductController@addToCart')->name('cart.add');
+
 Route::get('/shopping-cart', 'ProductController@showCart')->name('cart.show');
 
-Route::get('/checkout/{amount}', 'ProductController@checkout')->name('cart.checkout');
+Route::put('/products/{product}', 'ProductController@update')->name('product.update');
+Route::get('/checkout/{amount}', 'ProductController@checkout')->name('cart.checkout')->middleware('auth');
 
 Route::post('/charge', 'ProductController@charge')->name('cart.charge');
+
+
+Route::get('/orders', 'OrderController@index')->name('order.index');

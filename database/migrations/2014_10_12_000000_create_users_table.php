@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
     }
 
     /**
+     *
      * Reverse the migrations.
      *
      * @return void
@@ -34,3 +35,6 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
     }
 }
+
+
+

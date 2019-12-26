@@ -35,7 +35,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="{{route('store')}}" class="nav-link">Store</a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a href="{{route('product.index')}}" class="nav-link">Product</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -64,11 +70,16 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{ route('order.index') }}" class="dropdown-item">Orders <i class="fas fa-grip-horizontal ml-2"></i></a>
+                                    <div class="dropdown-divider"></div>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
-                                    </a>
+                                        <i class="fas fa-sign-out-alt ml-2"></i>
+                                        </a>
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -85,6 +96,8 @@
             @yield('content')
         </main>
     </div>
+    @include('sweetalert::alert')
+
     @yield('script')
 </body>
 </html>
